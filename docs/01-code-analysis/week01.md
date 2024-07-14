@@ -2,6 +2,8 @@
 
 > “Most, if not all developers spend their day reading codes”
 
+[Exercice pour java complété](../../exercise/java/week01-code-analysis/exercise/readme.md)
+
 ### Daily job
 
 As developers, we spend a lot of time reading code (some research suggest about 2/3 or our time), and as such, we polished our own set of tools to be able to navigate the intricate nature of the several code base we work on.
