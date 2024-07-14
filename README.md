@@ -1,3 +1,7 @@
+Ce fork est simplement mon support pour travailler et compléter le cahier de vacances qui est proposé ci-dessous.
+
+_______________
+
 # Summer Craft Book 2024
 
 [![Our Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/E5Z9s9UKTS)
