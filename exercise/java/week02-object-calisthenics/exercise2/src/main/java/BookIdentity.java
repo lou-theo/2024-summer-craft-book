@@ -8,7 +8,9 @@ public class BookIdentity {
     }
 
     public static boolean isValidData(BookIdentity.Title title, BookIdentity.Author author) {
-        // I don't want to change the behavior of the original code, so I will keep the null check, but I think it could be changed to have null check in BookIdentity.Title and BookIdentity.Author classes. If null, it throws (or whatever) but it's impossible to have invalid data and so no need to check it elsewhere.
+        // I don't want to change the behavior of the original code, so I will keep the null check.
+        // However, I think it could be changed to have null check in BookIdentity.Title and BookIdentity.Author classes.
+        // If null, it throws (or whatever) so it's impossible to have invalid data and no need to check it elsewhere.
         return title.value == null || author.value == null;
     }
 

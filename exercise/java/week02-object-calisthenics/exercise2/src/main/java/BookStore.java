@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class BookStore {
     private final Inventory inventory = new Inventory();
@@ -7,29 +8,25 @@ public class BookStore {
         if (Book.isValidData(title, author, copies)) {
             return;
         }
-        Book foundBook = inventory.findBook(title, author);
-        if (foundBook != null) {
-            foundBook.addCopies(copies);
-            return;
-        }
-        inventory.add(new Book(title, author, copies));
+        inventory.findBook(title, author)
+            .ifPresentOrElse(
+                book -> book.addCopies(copies),
+                () -> inventory.add(new Book(title, author, copies))
+            );
     }
 
     public void sellBook(BookIdentity.Title title, BookIdentity.Author author, Stock copies) {
-        Book foundBook = inventory.findBook(title, author);
-        if (foundBook == null) {
-            return;
-        }
-        foundBook.removeCopies(copies);
+        inventory.findBook(title, author)
+            .ifPresent(book -> book.removeCopies(copies));
     }
 
     static class Inventory {
         private final ArrayList<Book> inventory = new ArrayList<>();
 
-        public Book findBook(BookIdentity.Title title, BookIdentity.Author author) {
+        public Optional<Book> findBook(BookIdentity.Title title, BookIdentity.Author author) {
             return inventory.stream()
                 .filter(book -> book.equals(new BookIdentity(title, author)))
-                .findFirst().orElse(null);
+                .findFirst();
         }
 
         public void add(Book book) {
