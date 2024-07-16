@@ -20,9 +20,15 @@ public class BookIdentity {
 
     public static class Title {
         public String value;
+        public boolean equals(Title title) {
+            return value.equals(title.value);
+        }
     }
 
     public static class Author {
         public String value;
+        public boolean equals(Author author) {
+            return value.equals(author.value);
+        }
     }
 }
