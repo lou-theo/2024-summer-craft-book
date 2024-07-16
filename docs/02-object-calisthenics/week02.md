@@ -89,5 +89,3 @@ Exercise => Head to the /exercise folder to the week 2 - exercise 2 to get the c
 Solution => Head to the /solution folder to the week 2 - exercise 2 to get the code version
 
 [Exercice pour java complété](../../exercise/java/week02-object-calisthenics/exercise2/readme.md)
-
-### Go further: CQS Heuristics
