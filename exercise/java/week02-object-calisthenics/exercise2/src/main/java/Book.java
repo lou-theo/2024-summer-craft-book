@@ -1,35 +1,25 @@
 class Book {
-    private String title;
-    private String author;
-    private int copies;
+    private final BookIdentity identity;
+    private final Stock stock;
 
-    public Book(String title, String author, int copies) {
-        this.title = title;
-        this.author = author;
-        this.copies = copies;
+    public Book(BookIdentity.Title title, BookIdentity.Author author, Stock stock) {
+        this.identity = new BookIdentity(title, author);
+        this.stock = stock;
     }
 
-    public void addCopies(int additionalCopies) {
-        if (additionalCopies > 0) {
-            this.copies += additionalCopies;
-        }
+    public static boolean isValidData(BookIdentity.Title title, BookIdentity.Author author, Stock copies) {
+        return BookIdentity.isValidData(title, author) || copies.isPositive();
     }
 
-    public void removeCopies(int soldCopies) {
-        if (soldCopies > 0 && this.copies >= soldCopies) {
-            this.copies -= soldCopies;
-        }
+    public boolean equals(BookIdentity identityToCompare) {
+        return identity.equals(identityToCompare);
     }
 
-    public String getTitle() {
-        return title;
+    public void addCopies(Stock copies) {
+        stock.add(copies);
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public int getCopies() {
-        return copies;
+    public void removeCopies(Stock copies) {
+        stock.remove(copies);
     }
 }

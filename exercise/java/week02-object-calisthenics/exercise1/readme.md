@@ -6,3 +6,5 @@ The first thing you have to religiously go through is to avoid unnecessary inden
 >**List down the steps to simplify this code?**
 
 Write down everything you can do to make this code clearer below.
+
+* inverser et fusionner les if dont le else throw à l'aide de l'IDE

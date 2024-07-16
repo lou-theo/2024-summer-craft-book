@@ -1,36 +1,39 @@
 import java.util.ArrayList;
 
 public class BookStore {
-    private ArrayList<Book> inv = new ArrayList<>();
+    private final Inventory inventory = new Inventory();
 
-    public void addBook(String title, String author, int copies) {
-        if (title != null && author != null && copies > 0) {
-            Book foundBook = null;
-            for (Book book : inv) {
-                if (book.getTitle().equals(title)
-                        && book.getAuthor().equals(author)) {
-                    foundBook = book;
-                    break;
-                }
-            }
-            if (foundBook != null) {
-                foundBook.addCopies(copies);
-            } else {
-                inv.add(new Book(title, author, copies));
-            }
+    public void addToInventory(BookIdentity.Title title, BookIdentity.Author author, Stock copies) {
+        if (Book.isValidData(title, author, copies)) {
+            return;
         }
+        Book foundBook = inventory.findBook(title, author);
+        if (foundBook != null) {
+            foundBook.addCopies(copies);
+            return;
+        }
+        inventory.add(new Book(title, author, copies));
     }
 
-    public void sellBook(String title, String author, int copies) {
-        for (Book book : inv) {
-            if (book.getTitle().equals(title)
-                    && book.getAuthor().equals(author)) {
-                book.removeCopies(copies);
-                if (book.getCopies() <= 0) {
-                    inv.remove(book);
-                }
-                break;
-            }
+    public void sellBook(BookIdentity.Title title, BookIdentity.Author author, Stock copies) {
+        Book foundBook = inventory.findBook(title, author);
+        if (foundBook == null) {
+            return;
+        }
+        foundBook.removeCopies(copies);
+    }
+
+    static class Inventory {
+        private final ArrayList<Book> inventory = new ArrayList<>();
+
+        public Book findBook(BookIdentity.Title title, BookIdentity.Author author) {
+            return inventory.stream()
+                .filter(book -> book.equals(new BookIdentity(title, author)))
+                .findFirst().orElse(null);
+        }
+
+        public void add(Book book) {
+            inventory.add(book);
         }
     }
 }
