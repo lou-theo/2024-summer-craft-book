@@ -36,6 +36,8 @@ Exercise => Head to the /exercise folder to the week 3 - exercise 2 to get the c
 
 Solution => Head to the /solution folder to the week 3 - exercise 2 to get the code version
 
+[Exercice pour java complété](../../exercise/java/week03-cqs/exercise2)
+
 ### Go Further: CQS Heuristics
 
 The CQS principle can bring you several advantages such as code clarity, better testability and maintainability.
