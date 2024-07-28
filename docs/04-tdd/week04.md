@@ -38,6 +38,8 @@ Exercise => Head to the /exercise folder to the week 4 - exercise 1 to get the c
 
 Solution => Head to the /solution folder to the week 4 - exercise 1 to get the code version
 
+[Exercice pour java complété](../../exercise/java/week04-tdd)
+
 ### Go Further: The Mikado Method
 
 Using the Mikado method with TDD can be a great way to map out the dependencies for a functionality. Let's imagine we are taking the password validation exercise from earlier and try to map out using the Mikado method. You first need to write down the functionality or test you want to iterate.
